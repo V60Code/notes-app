@@ -1,0 +1,323 @@
+/* Color Variables */
+:root {
+  --primary-color: #2563eb;
+  --primary-dark: #1d4ed8;
+  --secondary-color: #64748b;
+  --accent-color: #f59e0b;
+  --success-color: #22c55e;
+  --danger-color: #ef4444;
+  --background-light: #f8fafc;
+  --text-dark: #1e293b;
+  --text-light: #94a3b8;
+  --white: #ffffff;
+}
+
+/* Base Styles */
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--background-light);
+  color: var(--text-dark);
+}
+
+/* Custom Button Styles */
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+.btn-outline-primary {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+/* Card Styles */
+.card {
+  border: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar Styles */
+.navbar-dark {
+  background-color: var(--primary-color) !important;
+}
+
+.navbar-dark .nav-link {
+  color: var(--white) !important;
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
+
+.navbar-dark .nav-link:hover {
+  opacity: 1;
+}
+
+/* Form Styles */
+.form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.25);
+}
+
+/* Loading Styles */
+.loading-overlay {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.spinner-border {
+  color: var(--primary-color);
+}
+
+/* Skip to Content */
+.skip-to-content {
+  position: absolute;
+  left: -9999px;
+  z-index: 9999;
+  padding: 1rem;
+  background-color: var(--primary-color);
+  color: var(--white);
+  text-decoration: none;
+}
+
+.skip-to-content:focus {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Custom Animations */
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* View Transitions */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(page-content) {
+  animation: 
+    180ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
+    600ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+}
+
+::view-transition-new(page-content) {
+  animation: 
+    420ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
+    600ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+}
+
+@keyframes fade-out {
+  to { opacity: 0; }
+}
+
+@keyframes slide-from-right {
+  from { transform: translateX(30px); }
+}
+
+@keyframes slide-to-left {
+  to { transform: translateX(-30px); }
+}
+
+/* Story Card Transitions */
+.story-card {
+  view-transition-name: story-card;
+  animation: slideIn 0.3s ease-out;
+}
+
+.auth-card {
+  view-transition-name: auth-card;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.page-title {
+  view-transition-name: page-title;
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  #map {
+    height: 400px;
+  }
+  
+  .camera-container video {
+    max-height: 300px;
+  }
+  
+  .story-popup {
+    max-width: 250px;
+  }
+}
+
+/* Map Styles */
+.map-container {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.leaflet-popup-content {
+  margin: 0;
+  padding: 0;
+}
+
+.story-popup {
+  padding: 1rem;
+}
+
+.story-popup img {
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+/* Layer Control Styles */
+.leaflet-control-layers {
+  border: none !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.leaflet-control-layers-toggle {
+  background-size: 20px 20px;
+}
+
+.leaflet-control-layers-expanded {
+  padding: 0.5rem;
+  background-color: var(--white);
+  border-radius: 8px;
+}
+
+/* Map container */
+.map-container {
+  height: 300px;
+  width: 100%;
+  border-radius: 0.375rem;
+  margin-bottom: 1rem;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+  border-radius: 0.375rem;
+  z-index: 1;
+}
+
+/* Fix Leaflet controls z-index */
+.leaflet-top,
+.leaflet-bottom {
+  z-index: 999 !important;
+}
+
+/* Story popup styling */
+.story-popup {
+  max-width: 300px;
+}
+
+.story-popup h6 {
+  margin: 0;
+  color: #333;
+  font-weight: 600;
+}
+
+.story-popup p {
+  margin: 8px 0 0;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* Camera preview */
+.camera-container {
+  position: relative;
+  width: 100%;
+  border-radius: 0.375rem;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.camera-container video {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+/* Photo preview */
+#photoPreview {
+  max-height: 400px;
+  width: 100%;
+  object-fit: contain;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+}
+
+/* Card improvements */
+.card-header {
+  background-color: transparent;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+/* View Transitions */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Define view transition groups */
+::view-transition-old(page-content),
+::view-transition-new(page-content) {
+  animation-duration: 0.5s;
+}
+
+/* Shared element transitions */
+.story-card {
+  view-transition-name: story-card;
+}
+
+.auth-card {
+  view-transition-name: auth-card;
+}
+
+.page-title {
+  view-transition-name: page-title;
+} 

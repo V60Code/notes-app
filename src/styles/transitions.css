@@ -1,0 +1,62 @@
+/* Base styles for view transitions */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+}
+
+/* Fade and slide animation for page transitions */
+@keyframes slide-from-right {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-to-left {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+}
+
+::view-transition-old(root) {
+  animation: 0.5s slide-to-left ease-in-out both;
+}
+
+::view-transition-new(root) {
+  animation: 0.5s slide-from-right ease-in-out both;
+}
+
+/* Story card transitions */
+.story-card {
+  view-transition-name: story-card;
+}
+
+/* Image transitions */
+.story-image {
+  view-transition-name: story-image;
+}
+
+/* Form transitions */
+.story-form {
+  view-transition-name: story-form;
+}
+
+/* Map transitions */
+.map-container {
+  view-transition-name: map-container;
+}
+
+/* Loading indicator transitions */
+#loading {
+  view-transition-name: loading;
+} 

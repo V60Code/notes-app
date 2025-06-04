@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story App - Maps</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="./styles/main.css">
+    <style>
+        #map {
+            height: calc(100vh - 56px);
+            width: 100%;
+        }
+        .layer-control {
+            position: absolute;
+            top: 80px;
+            right: 20px;
+            z-index: 1000;
+            background: white;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .story-popup img {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="./index.html">Story App</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./index.html">Stories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./add-story.html">Add Story</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./maps.html">Maps</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <button id="logout-button" class="btn btn-outline-light">Logout</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="map"></div>
+    <div class="layer-control">
+        <div class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" id="allStoriesLayer" checked>
+            <label class="form-check-label" for="allStoriesLayer">
+                All Stories
+            </label>
+        </div>
+        <div class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" id="myStoriesLayer">
+            <label class="form-check-label" for="myStoriesLayer">
+                My Stories
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="recentStoriesLayer">
+            <label class="form-check-label" for="recentStoriesLayer">
+                Recent Stories (24h)
+            </label>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script type="module" src="./scripts/app.js"></script>
+</body>
+</html> 

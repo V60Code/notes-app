@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story App - Login</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#4a90e2">
+    <meta name="description" content="Share your stories with the world">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./src/styles/main.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="text-center mb-4">
+                    <h1>Story App</h1>
+                    <p class="text-muted">Share your stories with the world</p>
+                </div>
+
+                <div id="loading" class="text-center" style="display: none;">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+
+                <!-- Login Section -->
+                <div id="login-section" class="card">
+                    <div class="card-body">
+                        <h2 class="card-title text-center mb-4">Login</h2>
+                        <form id="login-form">
+                            <div class="mb-3">
+                                <label for="login-email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="login-email" 
+                                       autocomplete="username" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="login-password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="login-password" 
+                                       autocomplete="current-password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Login</button>
+                        </form>
+                        <div class="text-center mt-3">
+                            <button id="switch-to-register" class="btn btn-link">Don't have an account? Register</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Register Section -->
+                <div id="register-section" class="card" style="display: none;">
+                    <div class="card-body">
+                        <h2 class="card-title text-center mb-4">Register</h2>
+                        <form id="register-form">
+                            <div class="mb-3">
+                                <label for="register-name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="register-name" 
+                                       autocomplete="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="register-email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="register-email" 
+                                       autocomplete="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="register-password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="register-password" 
+                                       autocomplete="new-password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Register</button>
+                        </form>
+                        <div class="text-center mt-3">
+                            <button id="switch-to-login" class="btn btn-link">Already have an account? Login</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Service Worker Registration -->
+    <script type="module">
+        import { registerSW } from 'virtual:pwa-register';
+
+        registerSW({
+            onNeedRefresh() {
+                // Show a confirmation dialog to refresh the app
+                if (confirm('New content available. Reload?')) {
+                    window.location.reload();
+                }
+            },
+            onOfflineReady() {
+                console.log('App ready to work offline');
+            },
+            immediate: true
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module">
+        import AuthModel from './src/scripts/pages/auth/auth-model.js';
+        import AuthView from './src/scripts/pages/auth/auth-view.js';
+        import AuthPresenter from './src/scripts/pages/auth/auth-presenter.js';
+
+        // Initialize auth components when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            const model = new AuthModel();
+            const view = new AuthView();
+            new AuthPresenter(view, model);
+
+            // Log for debugging
+            console.log('Auth components initialized');
+        });
+    </script>
+</body>
+</html> 
