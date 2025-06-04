@@ -1,71 +1,84 @@
 # Story App
 
-A web application for sharing stories built with JavaScript using the Model-View-Presenter (MVP) architecture pattern. The app interacts with the Dicoding Story API to allow users to view, create, and explore stories.
+A Progressive Web App (PWA) for sharing stories with features like offline capability, push notifications, and location-based stories.
 
 ## Features
 
-- View list of stories
-- Add new story with photo upload
-- View story details
-- Responsive design
-- Modern UI with Bootstrap 5
+- 📱 Progressive Web App (PWA)
+  - Installable to homescreen
+  - Works offline
+  - Push notifications
+- 🔐 Authentication
+  - Login
+  - Register
+  - Secure token management
+- 📖 Stories
+  - View stories
+  - Add new stories
+  - Location-based stories with maps
+- 💾 Offline Support
+  - IndexedDB for data persistence
+  - Background sync for offline actions
+  - Cache API for assets
+- 🗺️ Maps Integration
+  - View stories on map
+  - Add location to stories
+  - Interactive map interface
 
-## Architecture
+## Tech Stack
 
-The application follows the MVP (Model-View-Presenter) pattern:
+- Frontend Framework: Vanilla JavaScript with Web Components
+- Build Tool: Vite
+- PWA: VitePWA
+- Maps: Leaflet.js
+- Storage: IndexedDB
+- Styling: CSS3 with Bootstrap
 
-- **Model**: Handles data and API calls
-- **Presenter**: Manages business logic and communication between Model and View
-- **View**: Handles UI rendering and user interactions
+## Getting Started
 
-Each feature is organized in its own directory with dedicated Model, View, and Presenter files.
+1. Clone the repository:
+```bash
+git clone https://github.com/V60Code/notes-app.git
+cd notes-app
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Run development server:
+```bash
+npm run dev
+```
+
+4. Build for production:
+```bash
+npm run build
+```
+
+## PWA Features
+
+- **Offline First**: Works without internet connection
+- **Installable**: Can be added to homescreen
+- **Push Notifications**: Real-time updates
+- **Background Sync**: Queue actions when offline
+- **Responsive**: Works on all devices
 
 ## Project Structure
 
 ```
 src/
 ├── scripts/
-│   ├── pages/
-│   │   ├── story-list/
-│   │   │   ├── story-list-model.js
-│   │   │   ├── story-list-presenter.js
-│   │   │   └── story-list-view.js
-│   │   ├── add-story/
-│   │   │   ├── add-story-model.js
-│   │   │   ├── add-story-presenter.js
-│   │   │   └── add-story-view.js
-│   │   └── story-detail/
-│   │       ├── story-detail-model.js
-│   │       ├── story-detail-presenter.js
-│   │       └── story-detail-view.js
-│   └── app.js
-└── styles/
-    └── main.css
+│   ├── components/    # Web components
+│   ├── pages/         # Page components
+│   ├── routes/        # Routing logic
+│   ├── services/      # API services
+│   └── utils/         # Utility functions
+├── styles/           # CSS styles
+└── public/          # Static assets
 ```
 
-## Getting Started
+## License
 
-1. Clone the repository
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
-4. Open the application in your browser at the URL shown in the terminal
-
-## Dependencies
-
-- Bootstrap 5.3.0 - UI framework
-- SweetAlert2 11.7.0 - Beautiful alerts and notifications
-- Vite 4.5.0 - Build tool and development server
-
-## API Integration
-
-The app uses the Dicoding Story API (https://story-api.dicoding.dev/v1/) with the following endpoints:
-
-- GET /stories - Fetch list of stories
-- POST /stories - Create new story
-- GET /stories/:id - Get story details
+This project is licensed under the Apache-2.0 License - see the [LICENSE](LICENSE) file for details.
